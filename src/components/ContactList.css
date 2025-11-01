@@ -1,0 +1,40 @@
+.dial-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.dial-icon {
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  background-color: #007bff; /* blue fill */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dial-icon:hover {
+  background-color: #0056b3;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.contact-header {
+  display: flex;
+  align-items: center;
+}
+
+.contact-card {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}

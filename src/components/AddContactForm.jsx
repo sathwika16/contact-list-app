@@ -2,53 +2,68 @@ import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import "./AddContactForm.css";
 
-export default function AddContactForm({ onAdd, onClose }) {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+export default function AddContactForm({ onAddContact, onClose }) {
+  const [form, setForm] = useState({ name: "", phone: "", email: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
-    onAdd(formData);
-    setFormData({ name: "", email: "", phone: "" });
-    onClose();
+    if (!form.name || !form.phone) {
+      alert("Name and Phone are required!");
+      return;
+    }
+    onAddContact(form);
+    setForm({ name: "", phone: "", email: "" });
   };
 
   return (
-    <div className="add-contact-overlay" onClick={onClose}>
-      <div className="add-contact" onClick={(e) => e.stopPropagation()}>
-        <div className="add-contact-header">
-          <h3>Add Contact</h3>
-          <FaTimes className="close-icon" onClick={onClose} />
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2>Add Contact</h2>
+          <FaTimes className="close-btn" onClick={onClose} />
         </div>
 
         <form onSubmit={handleSubmit}>
+          <label>Name</label>
           <input
             type="text"
             name="name"
-            placeholder="Name"
-            value={formData.name}
+            placeholder="Enter name"
+            value={form.name}
             onChange={handleChange}
           />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+
+          <label>Phone</label>
           <input
             type="tel"
             name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
+            placeholder="Enter phone number"
+            value={form.phone}
             onChange={handleChange}
           />
-          <button type="submit">Add</button>
+
+          <label>Email (optional)</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            value={form.email}
+            onChange={handleChange}
+          />
+
+          <div className="modal-actions">
+            <button type="submit" className="add-contact-btn">
+              ✅ Add Contact
+            </button>
+            <button type="button" className="back-btn" onClick={onClose}>
+              ⬅️ Back
+            </button>
+          </div>
         </form>
       </div>
     </div>

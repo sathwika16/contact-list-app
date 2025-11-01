@@ -1,65 +1,62 @@
 import { useState } from "react";
 import "./styles.css";
-import AddContactForm from "./components/AddContactForm";
 import ContactList from "./components/ContactList";
-import SearchBar from "./components/SearchBar";
-import { contacts as initialContacts } from "./data";
+import AddContactForm from "./components/AddContactForm";
 import DialerModal from "./components/DialerModal";
+import SearchBar from "./components/SearchBar";
+import { contactsData } from "./data";
 
 export default function App() {
   const [contacts, setContacts] = useState(
-    [...initialContacts].sort((a, b) => a.name.localeCompare(b.name))
+    [...contactsData].sort((a, b) => a.name.localeCompare(b.name))
   );
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showForm, setShowForm] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [showDialer, setShowDialer] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleAddContact = (contact) => {
-    const updated = [...contacts, contact].sort((a, b) =>
+  const handleAddContact = (newContact) => {
+    const updated = [...contacts, newContact].sort((a, b) =>
       a.name.localeCompare(b.name)
     );
     setContacts(updated);
-    setShowForm(false);
+    setShowAddModal(false);
   };
 
   const handleDelete = (name) => {
     setContacts(contacts.filter((c) => c.name !== name));
   };
 
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredContacts = contacts.filter((c) =>
+    c.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <div className="app">
-      <header className="header">
-        <h1>Contacts</h1>
-      </header>
+     <header className="top-bar">
+  <h1 className="heading">My Contacts</h1>
+  <div className="search-add-container">
+    <SearchBar onSearch={setSearchQuery} />
+    <button className="add-btn" onClick={() => setShowAddModal(true)}>
+      ➕ Add Contact
+    </button>
+  </div>
+</header>
 
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+<ContactList contacts={filteredContacts} onDelete={handleDelete} />
 
-      {showForm && <AddContactForm onAddContact={handleAddContact} />}
+{/* 📞 Floating Dial Button */}
+<button className="dial-btn" onClick={() => setShowDialer(true)}>
+  📞
+</button>
 
-      <ContactList contacts={filteredContacts} onDelete={handleDelete} />
-
-      <div className="floating-btns">
-        <button
-          className="fab add"
-          title="Add Contact"
-          onClick={() => setShowForm(!showForm)}
-        >
-          +
-        </button>
-        <button
-          className="fab dial"
-          title="Open Dialer"
-          onClick={() => setShowDialer(true)}
-        >
-          📞
-        </button>
-      </div>
-
-      {showDialer && <DialerModal onClose={() => setShowDialer(false)} />}
+{/* Modals */}
+{showAddModal && (
+  <AddContactForm
+    onAddContact={handleAddContact}
+    onClose={() => setShowAddModal(false)}
+  />
+)}
+{showDialer && <DialerModal onClose={() => setShowDialer(false)} />}
     </div>
   );
 }

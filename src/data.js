@@ -1,4 +1,4 @@
-export const contacts = [
+export const contactsData = [
   { id: 1, name: "Aarav Sharma", email: "aarav.sharma@gmail.com", phone: "+91 9876543210" },
   { id: 2, name: "Diya Patel", email: "diya.patel@gmail.com", phone: "+91 9821034576" },
   { id: 3, name: "Rohan Mehta", email: "rohan.mehta@yahoo.com", phone: "+91 9098123456" },
