@@ -1,0 +1,177 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #0077ff;
+}
+
+/* Floating buttons */
+.floating-btns {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.fab {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  font-size: 28px;
+  color: white;
+  background-color: #0077ff;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+}
+
+.dial {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+/* Contact list */
+.contact-list {
+  margin-top: 20px;
+}
+
+.contact-card {
+  background: #f9f9f9;
+  padding: 14px 16px;
+  margin: 10px 0;
+  border-radius: 14px;
+  font-weight: 500;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.contact-card:hover {
+  background: #eef5ff;
+  transform: scale(1.02);
+}
+
+.contact-name {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.contact-details {
+  margin-top: 10px;
+  font-size: 14px;
+  animation: zoomIn 0.3s ease;
+}
+
+.delete-btn {
+  margin-top: 8px;
+  background: #ff4d4f;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Dialer modal */
+.dialer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.dialer {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dialer h3 {
+  color: #0077ff;
+}
+
+.dialer-screen {
+  font-size: 20px;
+  background: #f1f5ff;
+  margin: 12px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.dialer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dialer-grid button {
+  background: #f5f5f5;
+  border: none;
+  font-size: 18px;
+  padding: 12px 0;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.dialer-grid button:hover {
+  background: #dbe9ff;
+}
+
+.dialer-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.clear {
+  background: #ddd;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.call-btn {
+  background: #0077ff;
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+}

@@ -1,0 +1,94 @@
+.dialer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialer {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 280px;
+  text-align: center;
+  position: relative;
+}
+
+.dialer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+.close-icon:hover {
+  color: #ff4d4d;
+  transform: scale(1.1);
+}
+
+.dialer-screen {
+  margin: 15px 0;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.dialer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dialer-grid button {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dialer-grid button:hover {
+  background: #e0e0e0;
+}
+
+.dialer-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.clear {
+  background: #ddd;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.call-btn {
+  background: #4caf50;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.call-btn:hover {
+  background: #43a047;
+}
